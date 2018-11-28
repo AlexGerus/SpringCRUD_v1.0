@@ -1,17 +1,17 @@
 package project.module;
 
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "users", schema = "users_db", catalog = "")
+@Table(name = "users", schema = "db_crub", catalog = "")
 public class User implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "name")
@@ -26,14 +26,20 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "role")
-    private String role;
 
-    public User(String role) {
-        this.role = role;
-    }
+    @OneToMany(mappedBy = "user")
+    private Set<Role> userRoles = new HashSet<Role>();
+
 
     public User() {
+    }
+
+    public Set<Role> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<Role> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public long getId() {
@@ -74,14 +80,6 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
 }

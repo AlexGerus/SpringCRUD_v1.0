@@ -18,7 +18,7 @@
         <tr>
             <th>id</th><th>Name</th><th>age</th>
         </tr>
-        <c:forEach var = "user" items="${list}"  >
+        <c:forEach var = "user" items="${list}">
             <tr>
                 <td> ${user.id} </td>
                 <td><c:out value="${user.name}" /></td>
@@ -30,7 +30,6 @@
                 <td><input type="hidden" name="ageChange" value="${user.age}"></td>
                 <td><input type="hidden" name="loginChange" value="${user.login}"></td>
                 <td><input type="hidden" name="passwordChange" value="${user.password}"></td>
-                <td><input type="hidden" name="roleChange" value="${user.role}"></td>
                 <td><input type="submit" value="Изменить пользователя"></td>
                 </form>
                 </td>

@@ -53,7 +53,6 @@ public class UserDAOHibernate implements UserDAO {
         newUser.setAge(usersEntity.getAge());
         newUser.setLogin(usersEntity.getLogin());
         newUser.setPassword(usersEntity.getPassword());
-        newUser.setRole(usersEntity.getRole());
         em.merge(newUser);
     }
 

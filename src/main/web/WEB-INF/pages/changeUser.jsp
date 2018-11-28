@@ -28,9 +28,6 @@
         <tr>
             <td>Password: <input type="text", name="passwordChange" value="${passwordChange}"></td>
         </tr>
-        <tr>
-            <td>Role: <input type="text", name="roleChange" value="${roleChange}"></td>
-        </tr>
         </tr>
     </table>
     <input type="submit" value="Изменить">

@@ -1,16 +1,16 @@
 package project.controllers;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import project.module.Role;
 import project.module.User;
-import project.service.UserServise;
+import project.service.RoleService;
+import project.service.UserService;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -20,10 +20,14 @@ import java.util.List;
 public class UsersController {
 
     @Autowired
-    private UserServise userServise;
+    private UserService userService;
 
-    public void setUserServise(UserServise userServise) {
-        this.userServise = userServise;
+    @Autowired
+    private RoleService roleService;
+
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -34,18 +38,22 @@ public class UsersController {
     @RequestMapping(value = "/addUser", method = RequestMethod.GET)
     public String getAdd(Model model){
         model.addAttribute("userAttribute", new User());
+        model.addAttribute("roleAttribute", new Role());
         return "addUser";
     }
 
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public String addUsers(@ModelAttribute("userAttribute")User user){
-        userServise.addUser(user);
+    public String addUsers(@ModelAttribute("userAttribute")User user, @ModelAttribute("roleAttribute") Role role){
+        userService.addUser(user);
+        roleService.addRole(user, role);
         return "redirect:/list";
     }
 
     @RequestMapping(value = "/removeUser", method = RequestMethod.GET)
-    public String getDelete(@RequestParam("id") long id){
-        userServise.removeUser(id);
+    public String getDelete(@RequestParam("id") long id, Model model){
+        roleService.removeRole(id);
+        userService.removeUser(id);
+        model.addAttribute("id", id);
         return "redirect:/list";
     }
 
@@ -55,14 +63,12 @@ public class UsersController {
                           @RequestParam("ageChange")int age,
                           @RequestParam("loginChange")String login,
                           @RequestParam("passwordChange")String password,
-                          @RequestParam("roleChange")String role,
-                          Model model, @ModelAttribute("changeAttribute")User user){
+                          Model model){
         model.addAttribute("idChange",id);
         model.addAttribute("nameChange",name);
         model.addAttribute("ageChange",age);
         model.addAttribute("loginChange",login);
         model.addAttribute("passwordChange",password);
-        model.addAttribute("roleChange",role);
         return "changeUser";
     }
 
@@ -73,22 +79,20 @@ public class UsersController {
                              @RequestParam("ageChange")int age,
                              @RequestParam("loginChange")String login,
                              @RequestParam("passwordChange")String password,
-                             @RequestParam("roleChange")String role,
-                             Model model, @ModelAttribute("changeAttribute")User profile){
+                             @ModelAttribute("changeAttribute")User profile){
         profile.setId(id);
         profile.setName(name);
         profile.setAge(age);
         profile.setLogin(login);
         profile.setPassword(password);
-        profile.setRole(role);
-        userServise.changeUser(profile);
+        userService.changeUser(profile);
         return "redirect:/list";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listUsers(Model model, HttpSession session) throws IOException{
         if(session.getAttribute("userRole").equals("Admin")){
-            List<User> list = userServise.listUser();
+            List<User> list = userService.listUser();
             model.addAttribute("list", list);
             return "list";
         }
@@ -99,14 +103,14 @@ public class UsersController {
 
     @RequestMapping(value = "/regist", method = RequestMethod.GET)
     public String getRegist(Model model){
-        model.addAttribute("registAttribute", new User("User"));
+        model.addAttribute("registAttribute", new User());
         return "registration";
     }
 
     @RequestMapping(value = "/regist", method = RequestMethod.POST)
     public String registUser(@ModelAttribute("registAttribute")User user){
-        user.setRole("User");
-        userServise.registrUser(user);
+        userService.registrUser(user);
+        roleService.registRole(user, "user");
         return "redirect:/registred";
     }
 
@@ -121,14 +125,15 @@ public class UsersController {
                         Model model, HttpSession session){
         model.addAttribute("login", login);
         model.addAttribute("password", password);
-        User profile = userServise.getUserLogin(login);
-        if(profile.getPassword()!=null && profile.getLogin()!=null&&profile.getPassword().equalsIgnoreCase(password)){
-            if(profile.getRole().equalsIgnoreCase("user")){
-                session.setAttribute("userRole", profile.getRole());
+        User profile = userService.getUserLogin(login);
+        Role role = roleService.findRole(profile.getId());
+        if(profile.getPassword()!=null && profile.getLogin()!=null && profile.getPassword().equalsIgnoreCase(password)){
+            if(role.getNameRole().equalsIgnoreCase("user")){
+                session.setAttribute("userRole", role.getNameRole());
                 return "forAuthorizingUser";
             }
-            else if(profile.getRole().equalsIgnoreCase("admin")){
-                session.setAttribute("userRole", profile.getRole());
+            else if(role.getNameRole().equalsIgnoreCase("admin")){
+                session.setAttribute("userRole", role.getNameRole());
                 return "redirect:/list";
             }
             else return "redirect:/index";
