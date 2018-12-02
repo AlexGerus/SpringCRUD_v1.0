@@ -11,6 +11,15 @@
     <title>Title</title>
 </head>
 <body>
-Ты зашел!!!
+Привет!
+
+<form action="/logout" method="post">
+    <input type="submit" value="Выйти">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+
+<form action="/" method="post">
+    <input type="submit" value="Назад">
+</form>
 </body>
 </html>

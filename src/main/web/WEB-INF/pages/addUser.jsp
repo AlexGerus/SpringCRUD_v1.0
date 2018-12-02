@@ -28,7 +28,13 @@
         </tr>
         <tr>
             <td>Password :</td>
-            <td><form:input path="password" /></td>
+            <td><form:password path="password" /></td>
+        </tr>
+        <tr>
+            <td>Enabled :</td>
+            <td><form:input value="true" path="enabled" />
+
+            </td>
         </tr>
         <tr>
             <form:form modelAttribute="roleAttribute">

@@ -12,14 +12,18 @@
   <title>$Title$</title>
 </head>
 <body>
-<form action="/enter" method="post">
-  Login: <input type="text" name="login"><br><br>
-  Password: <input type="text" name="password"><br>
-  <input type="submit" value="Войти">
+
+<form action="/list">
+  <input type="submit" value="Для админа">
 </form>
 
-<form action="/regist">
-  <input type="submit" value="Зарегистрироваться">
+<form action="/registred">
+  <input type="submit" value="для юзера">
 </form>
+<form action="/logout" method="post">
+  <input type="submit" value="Выйти">
+  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+
 </body>
 </html>

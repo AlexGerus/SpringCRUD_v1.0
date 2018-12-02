@@ -1175,13 +1175,14 @@
     </column>
     <column id="291" parent="279" name="password">
       <Position>5</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="292" parent="279" name="enabled">
       <Position>6</Position>
       <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="293" parent="279" name="PRIMARY">

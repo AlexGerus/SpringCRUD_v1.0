@@ -35,9 +35,6 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:2.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-jpa:2.1.0.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.1.0.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.1.0.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.1.0.RELEASE" />
@@ -49,6 +46,9 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.1.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.0.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.0.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.0.0.RELEASE" />
         </element>
       </element>
     </root>

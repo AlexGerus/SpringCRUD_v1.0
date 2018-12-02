@@ -26,7 +26,7 @@
             <td>Login: <input type="text", name="loginChange" value="${loginChange}"></td>
         </tr>
         <tr>
-            <td>Password: <input type="text", name="passwordChange" value="${passwordChange}"></td>
+            <td>Password: <input type="password", name="passwordChange" value="${passwordChange}"></td>
         </tr>
         </tr>
     </table>

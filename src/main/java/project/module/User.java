@@ -26,12 +26,30 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @OneToMany(mappedBy = "user")
-    private Set<Role> userRoles = new HashSet<Role>();
+    private Set<Role> userRoles = new HashSet<>();
 
 
     public User() {
+    }
+
+    public User(String login, String password,
+                boolean enabled, Set<Role> userRoles) {
+        this.login = login;
+        this.password = password;
+        this.enabled = enabled;
+        this.userRoles = userRoles;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public Set<Role> getUserRoles() {

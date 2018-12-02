@@ -18,7 +18,7 @@
         <tr>
             <th>id</th><th>Name</th><th>age</th>
         </tr>
-        <c:forEach var = "user" items="${list}">
+        <c:forEach var = "user" items="${list}"  >
             <tr>
                 <td> ${user.id} </td>
                 <td><c:out value="${user.name}" /></td>
@@ -42,9 +42,19 @@
         </c:forEach>
         </tbody>
     </table>
-    <form action="/addUser">
+    <form action="/addUser" >
         <input type="submit" value="Добавить пользователя">
+
+    </form>
+    <form action="/logout" method="post">
+        <input type="submit" value="Выйти">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form>
+
+    <form action="/" method="post">
+        <input type="submit" value="Назад">
     </form>
 </div>
+
 </body>
 </html>
