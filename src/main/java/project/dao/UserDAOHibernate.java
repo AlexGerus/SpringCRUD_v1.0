@@ -50,12 +50,13 @@ public class UserDAOHibernate implements UserDAO {
 
     @Transactional
     public void changeUser(User usersEntity) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User newUser = getUser(usersEntity.getId());
         newUser.setId(usersEntity.getId());
         newUser.setName(usersEntity.getName());
         newUser.setAge(usersEntity.getAge());
         newUser.setLogin(usersEntity.getLogin());
-        newUser.setPassword(usersEntity.getPassword());
+        newUser.setPassword(encoder.encode(usersEntity.getPassword()));
         em.merge(newUser);
     }
 
@@ -69,7 +70,7 @@ public class UserDAOHibernate implements UserDAO {
 
     @Transactional
     public User getUserWithLogin(String login) {
-        return (User) em.createQuery("select user from User user where user.login = :login").setParameter("login", login).getSingleResult();
+        return em.createQuery("select user from User user where user.login = :login", User.class).setParameter("login", login).getSingleResult();
     }
 
 

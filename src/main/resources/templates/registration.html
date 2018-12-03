@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  th:action="@{/register}" th:object="${userUp}" method="post">
+    <table>
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" th:field="*{name}"  /> </td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input type="text" th:field="*{age}" /> </td>
+        </tr>
+        <tr>
+            <td>Login:</td>
+            <td><input type="text" th:field="*{login}" /> </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" th:field="*{password}" /></td>
+        </tr>
+    </table>
+    <input name="sumbit" type="submit" value="Зарегистрироваться">
+</form>
+</body>
+</html>

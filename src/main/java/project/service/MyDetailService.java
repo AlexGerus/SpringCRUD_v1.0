@@ -22,7 +22,7 @@ import java.util.Set;
 public class MyDetailService implements UserDetailsService {
 
     @Autowired
-    private UserDAO daoHibernate;
+    private UserDAOHibernate daoHibernate;
 
     @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

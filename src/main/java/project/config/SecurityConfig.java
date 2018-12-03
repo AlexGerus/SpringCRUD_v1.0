@@ -1,6 +1,7 @@
 package project.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import project.service.MyDetailService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    @Qualifier("userDetailService")
     UserDetailsService userDetailsService;
 
     @Autowired
@@ -35,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/regist").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/list").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()

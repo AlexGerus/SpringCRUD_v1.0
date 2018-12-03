@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Привет!
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Выйти">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
+
+<form th:action="@{/}" method="post">
+    <input type="submit" value="Назад">
+</form>
+</body>
+</html>

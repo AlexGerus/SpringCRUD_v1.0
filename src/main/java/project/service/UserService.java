@@ -3,7 +3,7 @@ package project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.dao.UserDAO;
+import project.dao.UserDAOHibernate;
 import project.module.User;
 import java.util.List;
 
@@ -12,16 +12,16 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserDAO dao;
+    private UserDAOHibernate dao;
 
     public UserService() {
     }
 
-    public UserDAO getDao() {
+    public UserDAOHibernate getDao() {
         return dao;
     }
 
-    public void setDao(UserDAO dao) {
+    public void setDao(UserDAOHibernate dao) {
         this.dao = dao;
     }
 

@@ -1,0 +1,51 @@
+<html xmlns:th="">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+        <tbody>
+        <tr>
+            <th>id</th><th>Name</th><th>age</th>
+        </tr>
+        <th:block th:each = "user :${list}">
+            <tr>
+                <td th:text ="${user.id}" />
+                <td th:text ="${user.name}"/>
+                <td th:text ="${user.age}" />
+                <td>
+                    <form th:action="@{/changeUser}">
+                <td><input type="hidden" name="idChange" th:value="${user.id}"></td>
+                <td><input type="hidden" name="nameChange" th:value="${user.name}"></td>
+                <td><input type="hidden" name="ageChange" th:value="${user.age}"></td>
+                <td><input type="hidden" name="loginChange" th:value="${user.login}"></td>
+                <td><input type="hidden" name="passwordChange" th:value="${user.password}"></td>
+                <td><input type="submit" value="Изменить пользователя"></td>
+                </form>
+                </td>
+                <td> <form th:action="@{/removeUser}">
+                <td><input type="hidden" name="id" th:value="${user.id}"> </td>
+                <td><input type="submit" value="Удалить пользователя"> </td>
+                </form>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <form action="/addUser" >
+        <input type="submit" value="Добавить пользователя">
+
+    </form>
+    <form action="/logout" method="post">
+        <input type="submit" value="Выйти">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form>
+
+    <form action="/" method="post">
+        <input type="submit" value="Назад">
+    </form>
+</div>
+
+</body>
+</html>
