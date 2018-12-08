@@ -12,4 +12,6 @@ public class SpringBootCRUD {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootCRUD.class, args);
     }
+
+
 }

@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dynatable/0.3.1/jquery.dynatable.css">
 </head>
 <body>
 <div id = "container">
@@ -151,7 +150,7 @@
                                                 <th scope="col">Age</th>
                                                 <th scope="col">Login</th>
                                                 <th scope="col">Password</th>
-                                                <th scope="col">Delete</th>
+                                                <th scope="col">delete</th>
                                                 <th scope="col">Edit</th>
                                             </tr>
                                             </thead>
@@ -168,7 +167,7 @@
 
                                                     <td th:text ="${user.password}"></td>
 
-                                                    <td><button id='delete' class='btn btn-danger' >Delete</button></td>
+                                                    <td><button id='delete' class='btn btn-danger' >delete</button></td>
 
                                                     <td><button id='edit' class='btn btn-warning' data-toggle="modal" data-target="#EditModal">Edit</button></td>
                                                 </tr>
@@ -200,44 +199,37 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="form-group row">
-                    <label for="idChange" class="col-sm-3 col-form-label">ID</label>
-                    <div class="col-sm-9">
-                        <input id="idChange" class="form-control" type="text" name="idChange" disabled>
-                    </div>
+                <div class="form-group form-vales">
+                    <label for="idChange">id:</label>
+                    <input id="idChange" class="form-control" type="text" name="idChange" disabled>
                 </div>
-                <div class="form-group row">
-                    <label for="nameChange" class="col-sm-3 col-form-label">Name</label>
-                    <div class="col-sm-9">
-                        <input id="nameChange" class="form-control" type="text">
-                    </div>
+
+                <div class="form-group form-vales">
+                    <label for="nameChange">имя:</label>
+                    <input id="nameChange" class="form-control" type="text">
                 </div>
-                <div class="form-group row">
-                    <label for="ageChange" class="col-sm-3 col-form-label">Age</label>
-                    <div class="col-sm-9">
-                        <input id ="ageChange" class="form-control" type="text">
-                    </div>
+
+                <div class="form-group form-vales">
+                    <label for="ageChange">возраст:</label>
+                    <input id ="ageChange" class="form-control" type="text">
                 </div>
-                <div class="form-group row">
-                    <label for="loginChange" class="col-sm-3 col-form-label">Login</label>
-                    <div class="col-sm-9">
-                        <input id = "loginChange" class="form-control" type="text">
-                    </div>
+
+                <div class="form-group form-vales">
+                    <label for="loginChange">логин:</label>
+                    <input id = "loginChange" class="form-control" type="text">
                 </div>
-                <div class="form-group row">
-                    <label for="passwordChange" class="col-sm-3 col-form-label">Password</label>
-                    <div class="col-sm-9">
-                        <input id = "passwordChange" class="form-control" type="password" >
-                    </div>
+
+                <div class="form-group form-vales">
+                    <label for="passwordChange">пароль:</label>
+                    <input id = "passwordChange" class="form-control" type="password" >
                 </div>
-                <div class="form-group row">
-                    <div class="col-12">
-                        <button class="btn btn-success btn-block" type="submit">Save</button>
-                    </div>
+                <div class="modal-footer">
+                    <button id='save' class='btn btn-danger'> Save </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <script>
     $(document).ready(function() {

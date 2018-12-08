@@ -1,25 +1,65 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <style>
+        .form-container{
+            border: 0px solid #000000; padding: 50px 60px; margin-top: 20vh;
+                -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+                -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+                box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+            border-radius: 33px 33px 33px 33px;
+            -moz-border-radius: 33px 33px 33px 33px;
+            -webkit-border-radius: 33px 33px 33px 33px;
+
+        }
+    </style>
+    <title>Login</title>
 </head>
 <body>
-<form th:action="@{/mylogin}" method="post">
-    <table>
-        <tr>
-            <td>Username</td>
-            <td><input type="text" name="username"></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" name="password"></td>
-        </tr>
-        <tr>
-            <td><button type="submit">Login</button></td>
-        </tr>
-    </table>
-</form>
-<a th:href="@{/register}">Register</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="form-container">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <form role="form" th:action="@{/mylogin}" method="post">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Введите логин">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Введите пароль">
+                    </div>
+                    <button class="btn btn-success btn-block" type="submit">Войти</button>
+                    <a href="/register">Register</a>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous">
+</script>
 </body>
 </html>

@@ -24,29 +24,25 @@ public class UsersController {
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
-
-    @RequestMapping(value = "/")
-    public String index () {
-        return "index";
-    }
-
     @RequestMapping(value = "/mylogin")
     public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/removeUser" , method = RequestMethod.GET)
-    public String getDelete(@RequestParam(value = "id") long id, Model model) {
+    @RequestMapping(value = "/removeUser/{id}" , method = RequestMethod.GET)
+    public String getDelete(@PathVariable long id, Model model) {
         roleService.removeRole((int) id);
         userService.removeUser(id);
         model.addAttribute("id", id);
         return "redirect:/list";
     }
 
-    @RequestMapping(value = "/list" , method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/list"} , method = RequestMethod.GET)
     public String listUsers(Model model) throws IOException {
         List<User> list = userService.listUser();
         model.addAttribute("list", list);
+        model.addAttribute("userAttribute", new User());
+        model.addAttribute("roleAttribute", new Role());
         return "list";
     }
 
@@ -64,29 +60,20 @@ public class UsersController {
         return "redirect:/list";
     }
 
-    @RequestMapping(value = "/changeUser", method = RequestMethod.GET)
-    public String getEdit(@RequestParam(value = "idChange") long id,
-                          @RequestParam(value = "nameChange") String name,
-                          @RequestParam(value = "ageChange") int age,
-                          @RequestParam(value = "loginChange") String login,
-                          @RequestParam(value = "passwordChange") String password,
-                          Model model) {
-
-        model.addAttribute("idChange", id);
-        model.addAttribute("nameChange", name);
-        model.addAttribute("ageChange", age);
-        model.addAttribute("loginChange", login);
-        model.addAttribute("passwordChange", password);
-        return "/changeUser";
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editUser(@PathVariable("id") Long id, Model model ) {
+        model.addAttribute("changeUser", userService.getUser(id));
+        return "list";
     }
 
-    @RequestMapping(value = "/changeUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/changeUser")
     public String changeUser(@RequestParam(value = "idChange") long id,
                              @RequestParam(value = "nameChange") String name,
                              @RequestParam(value = "ageChange") int age,
                              @RequestParam(value = "loginChange") String login,
                              @RequestParam(value = "passwordChange") String password,
                              @ModelAttribute("changeUser") User profile) {
+
         profile.setId(id);
         profile.setName(name);
         profile.setAge(age);
@@ -109,6 +96,7 @@ public class UsersController {
         roleService.registRole(user, "USER");
         return "redirect:/mylogin";
     }
+
 
     @GetMapping(value = "/registred")
     public String forUsers() {

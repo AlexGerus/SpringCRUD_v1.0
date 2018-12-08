@@ -5,42 +5,44 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/addUser}" th:object="${userAttribute}" method="post">
-    <table>
-        <tr>
-            <td>User Name</td>
-            <td><input type="text" th:field="*{name}"></td>
-        </tr>
-        <tr>
-            <td>User Age</td>
-            <td><input type="text" th:field="*{age}"></td>
-        </tr>
-        <tr>
-            <td>Login</td>
-            <td><input type="text" th:field="*{login}"></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="text" th:field="*{password}"></td>
-        </tr>
-        <tr>
-            <td>Enabled: </td>
-            <td><input type="text" th:field="*{enabled}"></td>
-        </tr>
-        <tr>
-            <form th:object="${roleAttribute}">
-                <table>
-                    <tr>
-                        <td>Role</td>
-                        <td><input type="text" th:field="*{nameRole}"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" value="Save"></td>
-                    </tr>
-                </table>
-            </form>
-        </tr>
-    </table>
-</form>
+<!--<form th:action="@{/addUser}" th:object="${userAttribute}" method="post">-->
+<!--<table >-->
+<!--<tr>-->
+<!--<td>User Name</td>-->
+<!--<td><input type="text" th:field="*{name}"  /> </td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Age:</td>-->
+<!--<td><input type="text" th:field="*{age}" /> </td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Login:</td>-->
+<!--<td><input type="text" th:field="*{login}" /> </td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Password:</td>-->
+<!--<td><input type="password" th:field="*{password}" /></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>Enabled :</td>-->
+<!--<td><input type="text" th:field="*{enabled}" /></td>-->
+<!--</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<form th:object="${roleAttribute}" >-->
+<!--<table>-->
+<!--<tr>-->
+<!--<td>Role :</td>-->
+<!--<td><input type="text" th:field="*{nameRole}" /></td>-->
+<!--</tr>-->
+
+<!--<tr>-->
+<!--<td><input type="submit" value="Save" /></td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</form>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</form>-->
 </body>
 </html>

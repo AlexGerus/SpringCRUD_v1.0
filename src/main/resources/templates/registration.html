@@ -1,30 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>regist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
 <body>
-<form  th:action="@{/register}" th:object="${userUp}" method="post">
-    <table>
-        <tr>
-            <td>User Name</td>
-            <td><input type="text" th:field="*{name}"  /> </td>
-        </tr>
-        <tr>
-            <td>Age:</td>
-            <td><input type="text" th:field="*{age}" /> </td>
-        </tr>
-        <tr>
-            <td>Login:</td>
-            <td><input type="text" th:field="*{login}" /> </td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" th:field="*{password}" /></td>
-        </tr>
-    </table>
-    <input name="sumbit" type="submit" value="Зарегистрироваться">
-</form>
+<div class="d-flex align-items-center flex-column justify-content-center" style="margin-top: 100px">
+
+    <form role="form" th:action="@{/register}" th:object="${userUp}" method="post">
+        <div class="form-group">
+            <label for="name">имя:</label>
+            <input id="name" class="form-control" name="name" required type="text" placeholder="Ivan" th:field="*{name}">
+        </div>
+
+        <div class="form-group">
+            <label for="age">возраст:</label>
+            <input id="age" class="form-control" name="age" required type="text" placeholder="19" th:field="*{age}">
+        </div>
+
+        <div class="form-group">
+            <label for="login">логин:</label>
+            <input id="login" class="form-control" name="login" required type="text" placeholder="Invan99" th:field="*{login}">
+        </div>
+
+        <div class="form-group">
+            <label for="password">пароль:</label>
+            <input id="password" class="form-control" name="password" required type="password" placeholder="****" th:field="*{password}">
+        </div>
+        <div class="form-group">
+            <input name="sumbit" type="submit" value="Зарегистрироваться" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
+
 </body>
 </html>
