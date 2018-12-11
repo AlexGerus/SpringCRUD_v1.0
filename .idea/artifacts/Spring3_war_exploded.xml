@@ -126,6 +126,7 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.0.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.1.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.json:json:20160810" />
         </element>
       </element>
     </root>
